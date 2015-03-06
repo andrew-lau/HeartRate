@@ -14,6 +14,9 @@ import android.os.Vibrator;
 public class VibrationController implements SensorEventListener {
 
     private Vibrator vibrator;
+    private float start;
+    private float end;
+    private boolean running;
 
     public VibrationController(Activity parentActivity) {
         SensorManager heartRateSm = (SensorManager) parentActivity.getSystemService(Context.SENSOR_SERVICE);
@@ -21,18 +24,41 @@ public class VibrationController implements SensorEventListener {
         heartRateSm.registerListener(this, heartRateSensor, SensorManager.SENSOR_DELAY_NORMAL);
 
         vibrator = (Vibrator) parentActivity.getSystemService(Context.VIBRATOR_SERVICE);
+
+        start = end = 0.0f;
+        running = false;
+    }
+
+    public void setRange(float start, float end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    public void start() {
+        running = true;
+    }
+
+    public void stop() {
+        running = false;
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        // do stuff here...
-        float[] values = event.values; // get the values for heart rate
-        vibrator.vibrate(500);
+        if(running) {
+            float[] values = event.values; // get the values for heart rate
+            float current = values[0];
+            if (start != 0 && end != 0 && !withinRange(current))
+                vibrator.vibrate(500);
+        }
+    }
+
+    private boolean withinRange(float h) {
+        return h >= start && h <= end;
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
+        // TODO do smth here...
     }
 
 }
