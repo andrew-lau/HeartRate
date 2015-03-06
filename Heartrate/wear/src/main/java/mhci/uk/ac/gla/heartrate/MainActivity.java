@@ -47,6 +47,10 @@ public class MainActivity extends Activity implements DataApi.DataListener,
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .build();
+
+        VibrationController vc = new VibrationController(this);
+        vc.setRange(800, 1000);
+        vc.start();
     }
 
     @Override
