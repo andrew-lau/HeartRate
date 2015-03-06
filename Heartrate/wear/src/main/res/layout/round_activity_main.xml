@@ -1,21 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context=".MainActivity" tools:deviceIds="wear_round"
+<android.support.wearable.view.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    tools:context=".MainActivity"
+    tools:deviceIds="wear_round"
     android:background="@color/white">
 
+    <TextView android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dead."
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_box="all"/>
+
+</android.support.wearable.view.BoxInsetLayout>
+
+
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent" tools:context=".MainActivity" tools:deviceIds="wear_round"-->
+    <!--android:background="@color/white">-->
+
     <!--<TextView android:id="@+id/text" android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content" android:layout_centerHorizontal="true"-->
-        <!--android:layout_centerVertical="true" android:text="@string/hello_round" />-->
+        <!--android:layout_height="match_parent" android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true" android:text="@string/hello_round" android:textColor="@color/black" android:textSize="20sp"/>-->
 
-    <!--<CircleImageView-->
-        <!--android:layout_width="50dp"-->
-        <!--android:layout_height="50dp"/>-->
+    <!--&lt;!&ndash;<CircleImageView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="50dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="50dp"/>&ndash;&gt;-->
 
 
-    <TextView android:id="@+id/heartRateText" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" android:text="56 " />
-</LinearLayout>
+    <!--&lt;!&ndash;<TextView android:id="@+id/heartRateText" android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content" android:layout_centerHorizontal="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_centerVertical="true" android:text="Dead." android:textColor="@color/black" />&ndash;&gt;-->
+<!--</LinearLayout>-->
 
 

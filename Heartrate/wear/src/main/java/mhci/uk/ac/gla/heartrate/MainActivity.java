@@ -38,7 +38,7 @@ public class MainActivity extends Activity implements DataApi.DataListener,
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
-                mTextView = (TextView) stub.findViewById(R.id.heartRateText);
+                mTextView = (TextView) stub.findViewById(R.id.text);
             }
         });
 
@@ -94,6 +94,11 @@ public class MainActivity extends Activity implements DataApi.DataListener,
 
     private void updateWorkout(DataMap workout){
         workoutTimeAndHeartRate=workout;
+    }
+
+    public void update(Float heartRate) {
+        if(mTextView != null)
+            mTextView.setText(heartRate.toString());
     }
 
 }

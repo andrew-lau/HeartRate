@@ -1,6 +1,5 @@
 package mhci.uk.ac.gla.heartrate;
 
-import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,11 +13,14 @@ import android.os.Vibrator;
 public class VibrationController implements SensorEventListener {
 
     private Vibrator vibrator;
+    private MainActivity parent;
     private float start;
     private float end;
     private boolean running;
 
-    public VibrationController(Activity parentActivity) {
+    public VibrationController(MainActivity parentActivity) {
+        parent = parentActivity;
+
         SensorManager heartRateSm = (SensorManager) parentActivity.getSystemService(Context.SENSOR_SERVICE);
         Sensor heartRateSensor = heartRateSm.getDefaultSensor(Sensor.TYPE_HEART_RATE);
         heartRateSm.registerListener(this, heartRateSensor, SensorManager.SENSOR_DELAY_NORMAL);
@@ -47,8 +49,9 @@ public class VibrationController implements SensorEventListener {
         if(running) {
             float[] values = event.values; // get the values for heart rate
             float current = values[0];
-            if (start != 0 && end != 0 && !withinRange(current))
-                vibrator.vibrate(500);
+            parent.update(current);
+            //if (start != 0 && end != 0 && !withinRange(current))
+            //    vibrator.vibrate(500);
         }
     }
 
