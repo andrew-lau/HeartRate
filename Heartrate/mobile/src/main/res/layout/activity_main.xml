@@ -1,11 +1,117 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.00"
+        android:id="@+id/warmup"
+        android:text="@string/warm_up"
+        android:textStyle="bold"
+        android:textColor="#ff00ff"
+        android:textColorHighlight="#000000"
+        android:textIsSelectable="true"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
-</RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/warm_up_time"
+            android:text="@string/default_warm_up_time"
+            android:textStyle="bold"
+            android:textColor="#ff00ff"
+            android:textColorHighlight="#000000"
+            android:textIsSelectable="true"/>
+        <Button
+            android:id="@+id/changeWarmUpTimeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change"
+            android:onClick="pickTimeWarmUp"/>
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/workout_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/country_arrays"
+        android:prompt="@string/workout_prompt" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/workout_time"
+            android:text="@string/default_workout_time"
+            android:textStyle="bold"
+            android:textColor="#ff00ff"
+            android:textColorHighlight="#000000"
+            android:textIsSelectable="true"/>
+        <Button
+            android:id="@+id/changeWorkoutTimeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change"
+            android:onClick="pickTimeWorkout"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.00"
+        android:id="@+id/cool_down_time"
+        android:text="@string/cool_down"
+        android:textStyle="bold"
+        android:textColor="#ff00ff"
+        android:textColorHighlight="#000000"
+        android:textIsSelectable="true"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/text1"
+            android:text="@string/default_cool_down_time"
+            android:textStyle="bold"
+            android:textColor="#ff00ff"
+            android:textColorHighlight="#000000"
+            android:textIsSelectable="true"/>
+        <Button
+            android:id="@+id/changeCoolDownTimeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Change"
+            android:onClick="pickTimeCoolDown"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>
