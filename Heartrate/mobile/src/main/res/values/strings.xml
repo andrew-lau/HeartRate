@@ -1,6 +1,21 @@
 <resources>
-    <string name="app_name">Heartrate</string>
-
+    <string name="app_name">WorkoutSelection</string>
+    <string name="select_workout">WorkoutSelection2</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="warm_up">Warm up</string>
+    <string name="cool_down">Cool down</string>
+    <string name="default_warm_up_time">Warm up duration: 8:00</string>
+    <string name="default_workout_time">Workout duration: 30:00</string>
+    <string name="default_cool_down_time">Cool down duration: 5:00</string>
+    <string name="workout_prompt">Choose a workout</string>
+
+    <string-array name="country_arrays">
+        <item>Fat Burning</item>
+        <item>Athletic</item>
+        <item>High Intensity</item>
+    </string-array>
+
+
+
 </resources>

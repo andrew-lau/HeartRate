@@ -45,18 +45,18 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main);
 
         warm_up_info = (TextView) findViewById(R.id.warm_up_time);
         workout_info = (TextView) findViewById(R.id.workout_time);
         cool_down_info = (TextView) findViewById(R.id.cool_down_time);
 
-        addListenerOnSpinnerItemSelection();
-        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-        String myDate = sharedPreferences.getString("birthday", "not set");
-        if(myDate.equalsIgnoreCase("not set")) {
-            showDialog(BIRTHDAY_DIALOG_ID);
-        }
+//        addListenerOnSpinnerItemSelection();
+//        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+//        String myDate = sharedPreferences.getString("birthday", "not set");
+//        if(myDate.equalsIgnoreCase("not set")) {
+//            showDialog(BIRTHDAY_DIALOG_ID);
+//        }
 
     }
 
