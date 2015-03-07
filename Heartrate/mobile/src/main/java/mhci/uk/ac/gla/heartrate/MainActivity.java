@@ -47,10 +47,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        warm_up_info = (TextView) findViewById(R.id.warm_up_time);
-        workout_info = (TextView) findViewById(R.id.workout_time);
-        cool_down_info = (TextView) findViewById(R.id.cool_down_time);
-
+//        warm_up_info = (TextView) findViewById(R.id.warm_up_time);
+//        workout_info = (TextView) findViewById(R.id.workout_time);
 //        addListenerOnSpinnerItemSelection();
 //        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
 //        String myDate = sharedPreferences.getString("birthday", "not set");
@@ -62,8 +60,8 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void addListenerOnSpinnerItemSelection() {
-        workout_spinner = (Spinner) findViewById(R.id.workout_selector);
-        workout_spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+//        workout_spinner = (Spinner) findViewById(R.id.workout_selector);
+//        workout_spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
     }
 
