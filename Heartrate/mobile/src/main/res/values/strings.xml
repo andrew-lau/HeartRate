@@ -10,11 +10,19 @@
     <string name="default_cool_down_time">Cool down duration: 5:00</string>
     <string name="workout_prompt">Choose a workout</string>
 
+    <string name="confirm">Yes</string>
+
+    <string name="Cancel">No</string>
+
+
+    <string name="workout_started">Workout started!</string>
+
     <string-array name="country_arrays">
         <item>Fat Burning</item>
         <item>Athletic</item>
         <item>High Intensity</item>
     </string-array>
+    <string name="title_activity_workout_started">WorkoutStarted</string>
 
 
 

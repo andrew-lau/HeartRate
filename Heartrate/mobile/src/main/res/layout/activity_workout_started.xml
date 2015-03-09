@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    tools:context="mhci.uk.ac.gla.heartrate.WorkoutStarted">
+
+    <TextView android:text="@string/workout_started" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:gravity="center"
+        android:fontFamily="sans-serif-light"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:textSize="25sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:background="#ff2b9dff"
+        android:textColor="#ffffff"
+        android:padding="10dp"
+        android:text="End Workout"
+        android:onClick="onEndWorkoutClick"/>
+
+</LinearLayout>

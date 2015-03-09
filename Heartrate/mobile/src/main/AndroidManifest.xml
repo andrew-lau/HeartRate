@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".WorkoutStarted"
+            android:label="@string/title_activity_workout_started" >
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <!--<ImageView-->
+    <!--android:src="@drawable/tennis_logo"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="64dp"-->
+    <!--android:scaleType="center"-->
+    <!--android:background="#ff029dff"-->
+    <!--android:contentDescription="@string/app_name" />-->
+    <TextView
+        android:id="@+id/logout_dialogue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:padding="10dp"
+        android:text="Are you sure you want to end the workout?"/>
+</LinearLayout>

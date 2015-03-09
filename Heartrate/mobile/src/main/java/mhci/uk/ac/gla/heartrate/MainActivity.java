@@ -1,5 +1,6 @@
 package mhci.uk.ac.gla.heartrate;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -182,6 +183,13 @@ public class MainActivity extends ActionBarActivity {
             return String.valueOf(c);
         else
             return "0" + String.valueOf(c);
+    }
+
+    //On start workout button press
+    public void workoutStarted(View view) {
+        //Move to WorkoutStarted Activity
+        Intent workoutStartedIntent = new Intent(this, WorkoutStarted.class);
+        startActivity(workoutStartedIntent);
     }
 
 }
