@@ -1,6 +1,7 @@
 package mhci.uk.ac.gla.heartrate;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.wearable.view.WatchViewStub;
@@ -23,6 +24,7 @@ public class MainActivity extends Activity implements DataApi.DataListener,
     private static final String WORKOUT_KEY = "mhci.uk.ac.gla.heartrate.key.workout";
     private DataMap workoutTimeAndHeartRate = new DataMap();
     private GoogleApiClient mGoogleApiClient;
+    private int countdowns;
 
     private TextView mHeartBeatTextView;
     private TextView mDurationTextView;
@@ -31,10 +33,14 @@ public class MainActivity extends Activity implements DataApi.DataListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        countdowns = 0;
+
         final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
+                stub.findViewById(R.id.round_activity).setBackgroundColor(Color.BLUE);
                 mHeartBeatTextView = (TextView) stub.findViewById(R.id.heartrate);
                 mDurationTextView = (TextView) stub.findViewById(R.id.duration);
                 startCountdown();
@@ -63,6 +69,13 @@ public class MainActivity extends Activity implements DataApi.DataListener,
 
             public void onFinish() {
                 mDurationTextView.setText("done!");
+                countdowns++;
+                if(countdowns == 1)
+                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.RED);
+                if(countdowns == 2)
+                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.GREEN);
+                if(countdowns < 3)
+                    startCountdown();
             }
         }.start();
     }
