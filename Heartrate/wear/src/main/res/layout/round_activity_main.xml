@@ -1,23 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.wearable.view.BoxInsetLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    tools:context=".MainActivity"
-    tools:deviceIds="wear_round"
-    android:background="@color/white">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".MainActivity" tools:deviceIds="wear_round"
+    android:id="@+id/round_activity">
 
-    <TextView android:id="@+id/text"
+        <TextView android:id="@+id/heartrate" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="---"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="18dp"
+            android:textSize="20dp"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true" />
+
+        <TextView android:id="@+id/duration" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:layout_marginTop="29dp"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dead."
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_box="all"/>
+        android:text="^"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
-</android.support.wearable.view.BoxInsetLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="^"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&lt;3"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="20dp"
+        android:layout_alignTop="@+id/heartrate"
+        android:layout_toStartOf="@+id/textView2" />
+
+</RelativeLayout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<android.support.wearable.view.BoxInsetLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--tools:context=".MainActivity"-->
+    <!--tools:deviceIds="wear_round"-->
+    <!--android:background="@color/white">-->
+
+    <!--<TextView android:id="@+id/text"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Dead."-->
+        <!--android:textColor="@color/black"-->
+        <!--android:textSize="20sp"-->
+        <!--app:layout_box="all"/>-->
+
+<!--</android.support.wearable.view.BoxInsetLayout>-->
 
 
 <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->

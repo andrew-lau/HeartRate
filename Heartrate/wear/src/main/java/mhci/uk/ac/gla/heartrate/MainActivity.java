@@ -1,12 +1,8 @@
 package mhci.uk.ac.gla.heartrate;
 
 import android.app.Activity;
-import android.content.Context;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.wearable.view.WatchViewStub;
 import android.widget.TextView;
 
@@ -28,7 +24,8 @@ public class MainActivity extends Activity implements DataApi.DataListener,
     private DataMap workoutTimeAndHeartRate = new DataMap();
     private GoogleApiClient mGoogleApiClient;
 
-    private TextView mTextView;
+    private TextView mHeartBeatTextView;
+    private TextView mDurationTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +35,9 @@ public class MainActivity extends Activity implements DataApi.DataListener,
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
-                mTextView = (TextView) stub.findViewById(R.id.text);
+                mHeartBeatTextView = (TextView) stub.findViewById(R.id.heartrate);
+                mDurationTextView = (TextView) stub.findViewById(R.id.duration);
+                startCountdown();
             }
         });
 
@@ -48,9 +47,24 @@ public class MainActivity extends Activity implements DataApi.DataListener,
                 .addOnConnectionFailedListener(this)
                 .build();
 
+        // heart rate
         VibrationController vc = new VibrationController(this);
         vc.setRange(800, 1000);
         vc.start();
+    }
+
+    private void startCountdown() {
+        new CountDownTimer(30000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                String zero = (millisUntilFinished / 1000 >= 10) ? "" : "0";
+                mDurationTextView.setText("00:00:" + zero + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                mDurationTextView.setText("done!");
+            }
+        }.start();
     }
 
     @Override
@@ -97,8 +111,12 @@ public class MainActivity extends Activity implements DataApi.DataListener,
     }
 
     public void update(Float heartRate) {
-        if(mTextView != null)
-            mTextView.setText(heartRate.toString());
+        if(mHeartBeatTextView != null) {
+            if(heartRate > 0)
+                mHeartBeatTextView.setText(heartRate.toString());
+            else
+                mHeartBeatTextView.setText("---");
+        }
     }
 
 }
