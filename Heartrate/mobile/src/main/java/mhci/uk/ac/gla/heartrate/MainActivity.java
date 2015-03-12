@@ -109,15 +109,11 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Spinner spinner = (Spinner) findViewById(R.id.workout_selector);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.workout_arrays, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+
 
 //        warm_up_info = (TextView) findViewById(R.id.warm_up_time);
 //        workout_info = (TextView) findViewById(R.id.workout_time);
-//        addListenerOnSpinnerItemSelection();
+          addListenerOnSpinnerItemSelection();
 //        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
 //        String myDate = sharedPreferences.getString("birthday", "not set");
 //        if(myDate.equalsIgnoreCase("not set")) {
@@ -128,9 +124,11 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
 
 
     public void addListenerOnSpinnerItemSelection() {
-//        workout_spinner = (Spinner) findViewById(R.id.workout_selector);
-//        workout_spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-
+        Spinner spinner = (Spinner) findViewById(R.id.workout_selector);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.workout_arrays, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
     }
 
 
@@ -196,12 +194,6 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
             String myDate = sharedPreferences.getString("birthday", "not set");
             builder.append("Birthday: " + myDate + "\n");
             //tvDisplayDate.setText(builder.toString());
-
-            Calendar c=Calendar.getInstance();
-            int age=c.get(Calendar.YEAR)-selectedYear;
-
-            workoutTimeAndHeartRate.putInt("age",age);
-
         }
     };
 
@@ -270,6 +262,21 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
             return "0" + String.valueOf(c);
     }
 
+    private void addAgeToDataMap(){
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(MainActivity.this);
+        String birth=prefs.getString("birthday","not set");
+        if(birth!="not set"){
+            String year=birth.substring(birth.lastIndexOf("/"),birth.lastIndexOf("/")+4);
+            Calendar c=Calendar.getInstance();
+            int age=c.YEAR-Integer.parseInt(year);
+            workoutTimeAndHeartRate.putInt("age",age);
+        }else{
+            //default age I doubt it would ever be needed but just encase...
+            workoutTimeAndHeartRate.putInt("age",21);
+        }
+    }
+
     // Needs to be called before data will be synced with the watch
     private void setWorkout() {
         PutDataMapRequest putDataMapReq = PutDataMapRequest.create("/workout");
@@ -305,6 +312,7 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
     //On start workout button press
     public void workoutStarted(View view) {
         //Move to WorkoutStarted Activity
+        addAgeToDataMap();
         setWorkout();
         sendStartWorkoutMessage();
         Intent workoutStartedIntent = new Intent(this, WorkoutStarted.class);
@@ -320,5 +328,7 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {}
+    public void onNothingSelected(AdapterView<?> parent) {
+        workoutTimeAndHeartRate.putString("workoutType","Athletic");
+    }
 }

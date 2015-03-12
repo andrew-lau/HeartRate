@@ -134,7 +134,7 @@ public class MainActivity extends Activity implements DataApi.DataListener,
                 String zero = (millisUntilFinished / 1000 >= 10) ? "" : "0";
                 long seconds = (millisUntilFinished/1000)%60;
                 long minutes = (millisUntilFinished/(1000*60))%60;
-                mDurationTextView.setText(typeS+": "+minutes+":"+seconds);
+                mDurationTextView.setText(typeS+"\n"+minutes+":"+seconds);
             }
 
             public void onFinish() {
