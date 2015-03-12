@@ -42,7 +42,8 @@
         android:layout_height="140dp"
         card_view:cardCornerRadius="4dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:background="@color/blue">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
@@ -141,7 +142,8 @@
         android:layout_width="match_parent"
         android:layout_height="140dp"
         card_view:cardCornerRadius="4dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:background="@color/orange">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
@@ -259,7 +261,8 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        card_view:cardCornerRadius="4dp">
+        card_view:cardCornerRadius="4dp"
+        android:background="@color/green">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"

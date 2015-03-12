@@ -40,7 +40,7 @@ public class MainActivity extends Activity implements DataApi.DataListener,
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
-                stub.findViewById(R.id.round_activity).setBackgroundColor(Color.BLUE);
+                stub.findViewById(R.id.round_activity).setBackgroundColor(Color.rgb(51, 102, 153));
                 mHeartBeatTextView = (TextView) stub.findViewById(R.id.heartrate);
                 mDurationTextView = (TextView) stub.findViewById(R.id.duration);
                 startCountdown();
@@ -70,10 +70,12 @@ public class MainActivity extends Activity implements DataApi.DataListener,
             public void onFinish() {
                 mDurationTextView.setText("done!");
                 countdowns++;
-                if(countdowns == 1)
-                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.RED);
+                if(countdowns == 1) {
+                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.rgb(255, 153, 0));
+                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity);
+                }
                 if(countdowns == 2)
-                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.GREEN);
+                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.rgb(9, 112, 84));
                 if(countdowns < 3)
                     startCountdown();
             }
