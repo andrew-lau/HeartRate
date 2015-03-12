@@ -1,7 +1,6 @@
 package mhci.uk.ac.gla.heartrate;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -22,7 +21,6 @@ import com.google.android.gms.wearable.Wearable;
 
 public class MainActivity extends Activity implements DataApi.DataListener,
         GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener {
         GoogleApiClient.OnConnectionFailedListener,
         MessageApi.MessageListener{
 
@@ -56,7 +54,6 @@ public class MainActivity extends Activity implements DataApi.DataListener,
                 stub.findViewById(R.id.round_activity).setBackgroundColor(Color.rgb(51, 102, 153));
                 mHeartBeatTextView = (TextView) stub.findViewById(R.id.heartrate);
                 mDurationTextView = (TextView) stub.findViewById(R.id.duration);
-                startCountdown();
             }
         });
 
@@ -144,15 +141,6 @@ public class MainActivity extends Activity implements DataApi.DataListener,
 
             public void onFinish() {
                 mDurationTextView.setText("done!");
-                countdowns++;
-                if(countdowns == 1) {
-                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.rgb(255, 153, 0));
-                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity);
-                }
-                if(countdowns == 2)
-                    findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.rgb(9, 112, 84));
-                if(countdowns < 3)
-                    startCountdown();
                 countdownRunning=false;
             }
         }.start();

@@ -2,7 +2,6 @@ package mhci.uk.ac.gla.heartrate;
 import java.util.Calendar;
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;

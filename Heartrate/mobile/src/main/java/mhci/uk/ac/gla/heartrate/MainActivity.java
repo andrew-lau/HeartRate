@@ -30,12 +30,8 @@ import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashSet;
 
-
-public class MainActivity extends ActionBarActivity {
 public class MainActivity extends ActionBarActivity  implements DataApi.DataListener, AdapterView.OnItemSelectedListener{
 
     private Spinner workout_spinner;
@@ -44,12 +40,10 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
     private TextView workout_info;
     private TextView cool_down_info;
 
-
     private int year;
     private int month;
     private int day;
     static final int BIRTHDAY_DIALOG_ID = 999;
-
 
     //maybe define default somewhere for consistency
     private int warm_up_minutes = 8;
@@ -110,36 +104,25 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
 //        warm_up_info = (TextView) findViewById(R.id.warm_up_time);
 //        workout_info = (TextView) findViewById(R.id.workout_time);
-//        addListenerOnSpinnerItemSelection();
+        addListenerOnSpinnerItemSelection();
         SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
         //String myDate = sharedPreferences.getString("birthday", "not set");
 
         if(!sharedPreferences.contains("birthday")) {
             showDialog(BIRTHDAY_DIALOG_ID);
         }
-
-
-
     }
 
 
     public void addListenerOnSpinnerItemSelection() {
-//        workout_spinner = (Spinner) findViewById(R.id.workout_selector);
-//        workout_spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-
         Spinner spinner = (Spinner) findViewById(R.id.workout_selector);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.workout_arrays, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
-
-
-
 
     public void pickTimeWarmUp(View view) {
 
@@ -178,8 +161,6 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
         return null;
     }
 
-
-
     private DatePickerDialog.OnDateSetListener datePickerListener
             = new DatePickerDialog.OnDateSetListener() {
 
@@ -201,12 +182,8 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
             String myDate = sharedPreferences.getString("birthday", "not set");
             builder.append("Birthday: " + myDate + "\n");
             //tvDisplayDate.setText(builder.toString());
-
-
-
         }
     };
-
 
     private DurationPicker.OnTimeSetListener warmUpDurationPickerListener =
             new DurationPicker.OnTimeSetListener() {
@@ -228,7 +205,6 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
                     // set current time into textview
 //                    warm_up_info.setText(new StringBuilder().append("Warm up duration: ").append(pad(warm_up_minutes))
 //                            .append(":").append(pad(warm_up_seconds)));
-
                 }
             };
 
