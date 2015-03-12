@@ -82,8 +82,7 @@ public class MainActivity extends Activity implements DataApi.DataListener,
         long cooldown=workoutInfo.get("cooldown");
         int age=workoutInfo.get("age");
 
-        float targetHR=(float)((220.0-age)*0.5);
-        vc.setRange(targetHR-10,targetHR+10);
+        vc.setRange(80,(float)((220.0-age)*0.5));
         findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.RED);
         startCountdown(warmup, "Warmup");
         while(countdownRunning&&!stopWorkout){
@@ -95,8 +94,13 @@ public class MainActivity extends Activity implements DataApi.DataListener,
             return;
         }
 
-        targetHR=(float)((220.0-age)*0.95);
-        vc.setRange(targetHR-10,targetHR+10);
+        String workoutType=workoutTimeAndHeartRate.get("workoutType");
+        if(workoutType.equals("Fat Burning"))
+            vc.setRange((float)((220.0-age)*0.50),(float)((220.0-age)*0.65));
+        if(workoutType.equals("Athletic"))
+            vc.setRange((float)((220.0-age)*0.65),(float)((220.0-age)*0.85));
+        if(workoutType.equals("High Intensity"))
+            vc.setRange((float)((220.0-age)*0.85),(float)((220.0-age)*1));
         findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.GREEN);
         startCountdown(workout,"Workout");
         while(countdownRunning&&!stopWorkout){
@@ -108,8 +112,7 @@ public class MainActivity extends Activity implements DataApi.DataListener,
             return;
         }
 
-        targetHR=(float)((220.0-age)*0.5);
-        vc.setRange(targetHR-10,targetHR+10);
+        vc.setRange(80,(float)((220.0-age)*0.5));
         findViewById(R.id.watch_view_stub).findViewById(R.id.round_activity).setBackgroundColor(Color.BLUE);
         startCountdown(cooldown,"Cooldown");
         while(countdownRunning&&!stopWorkout){

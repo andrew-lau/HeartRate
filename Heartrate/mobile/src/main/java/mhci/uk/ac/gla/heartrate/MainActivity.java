@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -33,7 +35,7 @@ import java.util.Calendar;
 import java.util.HashSet;
 
 
-public class MainActivity extends ActionBarActivity  implements DataApi.DataListener{
+public class MainActivity extends ActionBarActivity  implements DataApi.DataListener, AdapterView.OnItemSelectedListener{
 
     private Spinner workout_spinner;
 
@@ -106,6 +108,12 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Spinner spinner = (Spinner) findViewById(R.id.workout_selector);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.workout_arrays, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
 //        warm_up_info = (TextView) findViewById(R.id.warm_up_time);
 //        workout_info = (TextView) findViewById(R.id.workout_time);
@@ -306,4 +314,11 @@ public class MainActivity extends ActionBarActivity  implements DataApi.DataList
     @Override
     public void onDataChanged(DataEventBuffer dataEvents) {}
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        workoutTimeAndHeartRate.putString("workoutType",(String)parent.getItemAtPosition(position));
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {}
 }

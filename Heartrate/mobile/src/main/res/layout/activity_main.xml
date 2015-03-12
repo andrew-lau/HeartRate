@@ -166,7 +166,7 @@
                 android:id="@+id/workout_selector"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:entries="@array/country_arrays"
+                android:entries="@array/workout_arrays"
                 android:prompt="@string/workout_prompt"/>
 
         </LinearLayout>

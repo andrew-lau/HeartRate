@@ -17,7 +17,7 @@
 
     <string name="workout_started">Workout started!</string>
 
-    <string-array name="country_arrays">
+    <string-array name="workout_arrays">
         <item>Fat Burning</item>
         <item>Athletic</item>
         <item>High Intensity</item>
