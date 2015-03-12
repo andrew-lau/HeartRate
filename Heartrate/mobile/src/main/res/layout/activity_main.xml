@@ -78,15 +78,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/warmupDurationHours"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize = "15sp"
-                        android:padding = "5dp"
-                        android:text="0 hours"
-                        android:fontFamily="sans-serif-light"  />
-
-                    <TextView
                         android:id="@+id/warmupDurationMinutes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -116,7 +107,7 @@
                         android:layout_width="130dp"
                         android:layout_height="50dp"
                         android:text="Change duration"
-                        android:layout_marginTop="35dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="25dp"
                         android:fontFamily="sans-serif-light"
                         android:background="#ffeaeaea"
@@ -192,15 +183,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/workoutDurationHours"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize = "15sp"
-                    android:padding = "5dp"
-                    android:text="0 hours"
-                    android:fontFamily="sans-serif-light"  />
-
-                <TextView
                     android:id="@+id/workoutDurationMinutes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -230,7 +212,7 @@
                     android:layout_width="130dp"
                     android:layout_height="50dp"
                     android:text="Change duration"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="25dp"
                     android:fontFamily="sans-serif-light"
                     android:background="#ffeaeaea"
@@ -297,15 +279,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/cooldownDurationHours"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize = "15sp"
-                        android:padding = "5dp"
-                        android:text="0 hours"
-                        android:fontFamily="sans-serif-light"  />
-
-                    <TextView
                         android:id="@+id/cooldownDurationMinutes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -335,7 +308,7 @@
                         android:layout_width="130dp"
                         android:layout_height="50dp"
                         android:text="Change duration"
-                        android:layout_marginTop="35dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="25dp"
                         android:fontFamily="sans-serif-light"
                         android:background="#ffeaeaea"
