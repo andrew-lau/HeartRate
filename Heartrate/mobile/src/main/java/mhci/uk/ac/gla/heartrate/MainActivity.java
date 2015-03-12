@@ -209,7 +209,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
 
-    public void changeCooldownDuration(View view) {
+    public void changeCoolDownDuration(View view) {
 
         showDialog(COOL_DOWN_DIALOG_ID);
 
