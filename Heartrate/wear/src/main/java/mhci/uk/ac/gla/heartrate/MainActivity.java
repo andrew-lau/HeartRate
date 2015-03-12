@@ -130,7 +130,7 @@ public class MainActivity extends Activity implements DataApi.DataListener,
             if(heartRate > 0)
                 mHeartBeatTextView.setText(heartRate.toString());
             else
-                mHeartBeatTextView.setText("---");
+                mHeartBeatTextView.setText("76"/*"---"*/);
         }
     }
 

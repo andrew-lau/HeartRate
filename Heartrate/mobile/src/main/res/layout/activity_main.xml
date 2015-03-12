@@ -45,6 +45,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/blue">
+        card_view:cardBackgroundColor="@color/blue">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
@@ -59,6 +60,8 @@
                 android:text="Warmup"
                 android:textSize="25sp"
                 android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="wrap_content"
@@ -73,6 +76,8 @@
                     android:padding = "5dp"
                     android:text="Duration "
                     android:fontFamily="sans-serif-light"/>
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#FFFFFF" />
 
                 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="wrap_content"
@@ -96,6 +101,8 @@
                         android:padding = "5dp"
                         android:text="10 minutes"
                         android:fontFamily="sans-serif-light"  />
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="#FFFFFF"/>
 
                     <TextView
                         android:id="@+id/warmupDurationSeconds"
@@ -149,6 +156,7 @@
         card_view:cardCornerRadius="4dp"
         android:layout_marginBottom="10dp"
         android:background="@color/orange">
+        card_view:cardBackgroundColor="@color/orange">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
@@ -168,6 +176,8 @@
                 android:padding = "5dp"
                 android:text="Workout"
                 android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="#FFFFFF" />
 
             <Spinner
                 android:id="@+id/workout_selector"
@@ -191,6 +201,8 @@
                 android:padding = "5dp"
                 android:text="Duration "
                 android:fontFamily="sans-serif-light"/>
+                android:fontFamily="sans-serif-light"
+                android:textColor="#FFFFFF" />
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="wrap_content"
@@ -214,6 +226,8 @@
                     android:padding = "5dp"
                     android:text="10 minutes"
                     android:fontFamily="sans-serif-light"  />
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#FFFFFF" />
 
                 <TextView
                     android:id="@+id/workoutDurationSeconds"
@@ -223,6 +237,8 @@
                     android:padding = "5dp"
                     android:text="5 seconds"
                     android:fontFamily="sans-serif-light"/>
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#FFFFFF" />
 
             </LinearLayout>
 
@@ -276,6 +292,7 @@
         android:layout_height="155dp"
         card_view:cardCornerRadius="4dp">
 >>>>>>> 444c60bdb80b791a5144ab87562282a3bfe4e27f
+        card_view:cardBackgroundColor="@color/green">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
@@ -290,6 +307,8 @@
                 android:text="Cool Down"
                 android:textSize="25sp"
                 android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"/>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="wrap_content"
@@ -304,6 +323,8 @@
                     android:padding = "5dp"
                     android:text="Duration "
                     android:fontFamily="sans-serif-light"/>
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#FFFFFF" />
 
                 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="wrap_content"
@@ -327,6 +348,8 @@
                         android:padding = "5dp"
                         android:text="10 minutes"
                         android:fontFamily="sans-serif-light"  />
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="#FFFFFF" />
 
                     <TextView
                         android:id="@+id/cooldownDurationSeconds"
@@ -336,6 +359,8 @@
                         android:padding = "5dp"
                         android:text="5 seconds"
                         android:fontFamily="sans-serif-light"/>
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="#FFFFFF" />
 
                 </LinearLayout>
 
