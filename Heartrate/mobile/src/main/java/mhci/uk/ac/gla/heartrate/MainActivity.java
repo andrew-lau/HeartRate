@@ -1,8 +1,10 @@
 package mhci.uk.ac.gla.heartrate;
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -12,8 +14,26 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.widget.DatePicker;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.wearable.DataApi;
+import com.google.android.gms.wearable.DataEventBuffer;
+import com.google.android.gms.wearable.DataMap;
+import com.google.android.gms.wearable.MessageApi;
+import com.google.android.gms.wearable.Node;
+import com.google.android.gms.wearable.NodeApi;
+import com.google.android.gms.wearable.PutDataMapRequest;
+import com.google.android.gms.wearable.PutDataRequest;
+import com.google.android.gms.wearable.Wearable;
 
-public class MainActivity extends ActionBarActivity {
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashSet;
+
+
+public class MainActivity extends ActionBarActivity  implements DataApi.DataListener{
 
     private Spinner workout_spinner;
 
@@ -42,6 +62,45 @@ public class MainActivity extends ActionBarActivity {
     static final int WORKOUT_DIALOG_ID = 1;
     static final int COOL_DOWN_DIALOG_ID = 2;
 
+    private static final String WORKOUT_KEY = "mhci.uk.ac.gla.heartrate.key.workout";
+    private DataMap workoutTimeAndHeartRate= new DataMap();
+
+    private static final String TAG = MainActivity.class.getSimpleName();
+
+    private static final String START_WORKOUT_PATH = "/start/workout";
+
+    private GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
+            .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
+                @Override
+                public void onConnected(Bundle connectionHint) {
+                    Log.d(TAG, "onConnected: " + connectionHint);
+                    // Can use WearableAPI
+                }
+                @Override
+                public void onConnectionSuspended(int cause) {
+                    Log.d(TAG, "onConnectionSuspended: " + cause);
+                }
+            })
+            .addOnConnectionFailedListener(new GoogleApiClient.OnConnectionFailedListener() {
+                @Override
+                public void onConnectionFailed(ConnectionResult result) {
+                    Log.d(TAG, "onConnectionFailed: " + result);
+                }
+            })
+            .addApi(Wearable.API)
+            .build();
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    @Override
+    protected void onStop() {
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -130,7 +189,10 @@ public class MainActivity extends ActionBarActivity {
             builder.append("Birthday: " + myDate + "\n");
             //tvDisplayDate.setText(builder.toString());
 
+            Calendar c=Calendar.getInstance();
+            int age=c.get(Calendar.YEAR)-selectedYear;
 
+            workoutTimeAndHeartRate.putInt("age",age);
 
         }
     };
@@ -142,6 +204,11 @@ public class MainActivity extends ActionBarActivity {
                                       int selectedSeconds) {
                     warm_up_minutes = selectedMinutes;
                     warm_up_seconds = selectedSeconds;
+
+                    long millis=selectedMinutes*60*1000;
+                    millis+=(selectedSeconds*1000);
+
+                    workoutTimeAndHeartRate.putLong("warmup", millis);
 
                     // set current time into textview
                     warm_up_info.setText(new StringBuilder().append("Warm up duration: ").append(pad(warm_up_minutes))
@@ -157,6 +224,11 @@ public class MainActivity extends ActionBarActivity {
                     workout_minutes = selectedMinutes;
                     workout_seconds = selectedSeconds;
 
+                    long millis=selectedMinutes*60*1000;
+                    millis+=(selectedSeconds*1000);
+
+                    workoutTimeAndHeartRate.putLong("workout", millis);
+
                     // set current time into textview
                     workout_info.setText(new StringBuilder().append("Workout duration: ").append(pad(workout_minutes))
                             .append(":").append(pad(workout_seconds)));
@@ -170,6 +242,11 @@ public class MainActivity extends ActionBarActivity {
                                       int selectedSeconds) {
                     cool_down_minutes = selectedMinutes;
                     cool_down_seconds= selectedSeconds;
+
+                    long millis=selectedMinutes*60*1000;
+                    millis+=(selectedSeconds*1000);
+
+                    workoutTimeAndHeartRate.putLong("cooldown", millis);
 
                     // set current time into textview
                     cool_down_info.setText(new StringBuilder().append("Cool down duration: ").append(pad(cool_down_minutes))
@@ -185,11 +262,48 @@ public class MainActivity extends ActionBarActivity {
             return "0" + String.valueOf(c);
     }
 
+    // Needs to be called before data will be synced with the watch
+    private void setWorkout() {
+        PutDataMapRequest putDataMapReq = PutDataMapRequest.create("/workout");
+        putDataMapReq.getDataMap().putDataMap(WORKOUT_KEY, workoutTimeAndHeartRate);
+        PutDataRequest putDataReq = putDataMapReq.asPutDataRequest();
+        PendingResult<DataApi.DataItemResult> pendingResult =
+                Wearable.DataApi.putDataItem(mGoogleApiClient, putDataReq);
+    }
+
+    private void sendStartWorkoutMessage(String nodeId) {
+        Wearable.MessageApi.sendMessage(
+                mGoogleApiClient, nodeId, START_WORKOUT_PATH, new byte[0]).setResultCallback(
+                new ResultCallback<MessageApi.SendMessageResult>() {
+                    @Override
+                    public void onResult(MessageApi.SendMessageResult sendMessageResult) {
+                        if (!sendMessageResult.getStatus().isSuccess()) {
+                            Log.e(TAG, "Failed to send message with status code: "
+                                    + sendMessageResult.getStatus().getStatusCode());
+                        }
+                    }
+                }
+        );
+    }
+
+    private void sendStartWorkoutMessage(){
+        NodeApi.GetConnectedNodesResult nodes =
+                Wearable.NodeApi.getConnectedNodes(mGoogleApiClient).await();
+        for (Node node : nodes.getNodes()) {
+            sendStartWorkoutMessage(node.getId());
+        }
+    }
+
     //On start workout button press
     public void workoutStarted(View view) {
         //Move to WorkoutStarted Activity
+        setWorkout();
+        sendStartWorkoutMessage();
         Intent workoutStartedIntent = new Intent(this, WorkoutStarted.class);
         startActivity(workoutStartedIntent);
     }
+
+    @Override
+    public void onDataChanged(DataEventBuffer dataEvents) {}
 
 }
