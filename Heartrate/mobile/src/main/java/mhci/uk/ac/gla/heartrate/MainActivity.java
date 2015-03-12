@@ -51,11 +51,14 @@ public class MainActivity extends ActionBarActivity {
 //        warm_up_info = (TextView) findViewById(R.id.warm_up_time);
 //        workout_info = (TextView) findViewById(R.id.workout_time);
 //        addListenerOnSpinnerItemSelection();
-//        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
-//        String myDate = sharedPreferences.getString("birthday", "not set");
-//        if(myDate.equalsIgnoreCase("not set")) {
-//            showDialog(BIRTHDAY_DIALOG_ID);
-//        }
+        SharedPreferences sharedPreferences = getPreferences(MODE_PRIVATE);
+        //String myDate = sharedPreferences.getString("birthday", "not set");
+
+        if(!sharedPreferences.contains("birthday")) {
+            showDialog(BIRTHDAY_DIALOG_ID);
+        }
+
+
 
     }
 
@@ -144,8 +147,8 @@ public class MainActivity extends ActionBarActivity {
                     warm_up_seconds = selectedSeconds;
 
                     // set current time into textview
-                    warm_up_info.setText(new StringBuilder().append("Warm up duration: ").append(pad(warm_up_minutes))
-                            .append(":").append(pad(warm_up_seconds)));
+//                    warm_up_info.setText(new StringBuilder().append("Warm up duration: ").append(pad(warm_up_minutes))
+//                            .append(":").append(pad(warm_up_seconds)));
 
                 }
             };
@@ -158,8 +161,8 @@ public class MainActivity extends ActionBarActivity {
                     workout_seconds = selectedSeconds;
 
                     // set current time into textview
-                    workout_info.setText(new StringBuilder().append("Workout duration: ").append(pad(workout_minutes))
-                            .append(":").append(pad(workout_seconds)));
+//                    workout_info.setText(new StringBuilder().append("Workout duration: ").append(pad(workout_minutes))
+//                            .append(":").append(pad(workout_seconds)));
 
                 }
             };
@@ -172,8 +175,8 @@ public class MainActivity extends ActionBarActivity {
                     cool_down_seconds= selectedSeconds;
 
                     // set current time into textview
-                    cool_down_info.setText(new StringBuilder().append("Cool down duration: ").append(pad(cool_down_minutes))
-                            .append(":").append(pad(cool_down_seconds)));
+//                    cool_down_info.setText(new StringBuilder().append("Cool down duration: ").append(pad(cool_down_minutes))
+//                            .append(":").append(pad(cool_down_seconds)));
 
                 }
             };
@@ -191,5 +194,26 @@ public class MainActivity extends ActionBarActivity {
         Intent workoutStartedIntent = new Intent(this, WorkoutStarted.class);
         startActivity(workoutStartedIntent);
     }
+
+
+    public void changeWarmupDuration(View view) {
+
+        showDialog(WARM_UP_DIALOG_ID);
+
+    }
+
+    public void changeWorkoutDuration(View view) {
+
+        showDialog(WORKOUT_DIALOG_ID);
+
+    }
+
+
+    public void changeCooldownDuration(View view) {
+
+        showDialog(COOL_DOWN_DIALOG_ID);
+
+    }
+
 
 }

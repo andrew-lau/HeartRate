@@ -39,7 +39,7 @@
         android:id="@+id/warmup_card"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="155dp"
         card_view:cardCornerRadius="4dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp">
@@ -120,7 +120,8 @@
                         android:layout_marginLeft="25dp"
                         android:fontFamily="sans-serif-light"
                         android:background="#ffeaeaea"
-                        android:textColor="#ff525252"/>
+                        android:textColor="#ff525252"
+                        android:onClick="changeWarmupDuration"/>
 
                     <!--<TextView-->
                     <!--android:layout_width="match_parent"-->
@@ -139,7 +140,7 @@
         android:id="@+id/mainWorkoutCard"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="155dp"
         card_view:cardCornerRadius="4dp"
         android:layout_marginBottom="10dp">
 
@@ -233,7 +234,8 @@
                     android:layout_marginLeft="25dp"
                     android:fontFamily="sans-serif-light"
                     android:background="#ffeaeaea"
-                    android:textColor="#ff525252"/>
+                    android:textColor="#ff525252"
+                    android:onClick="changeWorkoutDuration"/>
 
                 <!--<TextView-->
                 <!--android:layout_width="match_parent"-->
@@ -258,7 +260,7 @@
         android:id="@+id/cooldown_card"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="155dp"
         card_view:cardCornerRadius="4dp">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -337,7 +339,8 @@
                         android:layout_marginLeft="25dp"
                         android:fontFamily="sans-serif-light"
                         android:background="#ffeaeaea"
-                        android:textColor="#ff525252"/>
+                        android:textColor="#ff525252"
+                        android:onClick="changeCoolDownDuration"/>
 
                     <!--<TextView-->
                     <!--android:layout_width="match_parent"-->
