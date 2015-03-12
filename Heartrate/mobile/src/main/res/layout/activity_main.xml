@@ -40,6 +40,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="140dp"
+        android:layout_height="155dp"
         card_view:cardCornerRadius="4dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -118,10 +119,13 @@
                         android:layout_height="50dp"
                         android:text="Change duration"
                         android:layout_marginTop="35dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="25dp"
                         android:fontFamily="sans-serif-light"
                         android:background="#ffeaeaea"
                         android:textColor="#ff525252"/>
+                        android:textColor="#ff525252"
+                        android:onClick="changeWarmupDuration"/>
 
                     <!--<TextView-->
                     <!--android:layout_width="match_parent"-->
@@ -141,6 +145,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="140dp"
+        android:layout_height="155dp"
         card_view:cardCornerRadius="4dp"
         android:layout_marginBottom="10dp"
         android:background="@color/orange">
@@ -232,10 +237,13 @@
                     android:layout_height="50dp"
                     android:text="Change duration"
                     android:layout_marginTop="35dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="25dp"
                     android:fontFamily="sans-serif-light"
                     android:background="#ffeaeaea"
                     android:textColor="#ff525252"/>
+                    android:textColor="#ff525252"
+                    android:onClick="changeWorkoutDuration"/>
 
                 <!--<TextView-->
                 <!--android:layout_width="match_parent"-->
@@ -260,9 +268,14 @@
         android:id="@+id/cooldown_card"
         android:layout_gravity="center"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="140dp"
         card_view:cardCornerRadius="4dp"
         android:background="@color/green">
+=======
+        android:layout_height="155dp"
+        card_view:cardCornerRadius="4dp">
+>>>>>>> 444c60bdb80b791a5144ab87562282a3bfe4e27f
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
@@ -337,10 +350,13 @@
                         android:layout_height="50dp"
                         android:text="Change duration"
                         android:layout_marginTop="35dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="25dp"
                         android:fontFamily="sans-serif-light"
                         android:background="#ffeaeaea"
                         android:textColor="#ff525252"/>
+                        android:textColor="#ff525252"
+                        android:onClick="changeCoolDownDuration"/>
 
                     <!--<TextView-->
                     <!--android:layout_width="match_parent"-->
