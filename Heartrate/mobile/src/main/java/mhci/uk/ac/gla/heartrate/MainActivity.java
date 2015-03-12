@@ -146,6 +146,12 @@ public class MainActivity extends ActionBarActivity {
                     warm_up_minutes = selectedMinutes;
                     warm_up_seconds = selectedSeconds;
 
+                    TextView warmupMinutes = (TextView) findViewById(R.id.warmupDurationMinutes);
+                    TextView warmupSeconds = (TextView) findViewById(R.id.warmupDurationSeconds);
+
+                    warmupMinutes.setText(warm_up_minutes + " " + "Minutes");
+                    warmupSeconds.setText(warm_up_seconds + " " + "Seconds");
+
                     // set current time into textview
 //                    warm_up_info.setText(new StringBuilder().append("Warm up duration: ").append(pad(warm_up_minutes))
 //                            .append(":").append(pad(warm_up_seconds)));
@@ -160,6 +166,12 @@ public class MainActivity extends ActionBarActivity {
                     workout_minutes = selectedMinutes;
                     workout_seconds = selectedSeconds;
 
+                    TextView workoutMinutes = (TextView) findViewById(R.id.workoutDurationMinutes);
+                    TextView workoutSeconds = (TextView) findViewById(R.id.workoutDurationSeconds);
+
+                    workoutMinutes.setText(workout_minutes + " " + "Minutes");
+                    workoutSeconds.setText(workout_seconds + " " + "Seconds");
+
                     // set current time into textview
 //                    workout_info.setText(new StringBuilder().append("Workout duration: ").append(pad(workout_minutes))
 //                            .append(":").append(pad(workout_seconds)));
@@ -173,6 +185,12 @@ public class MainActivity extends ActionBarActivity {
                                       int selectedSeconds) {
                     cool_down_minutes = selectedMinutes;
                     cool_down_seconds= selectedSeconds;
+
+                    TextView coolDownMinutes = (TextView) findViewById(R.id.cooldownDurationMinutes);
+                    TextView coolDownSeconds = (TextView) findViewById(R.id.cooldownDurationSeconds);
+
+                    coolDownMinutes.setText(cool_down_minutes + " " + "Minutes");
+                    coolDownSeconds.setText(cool_down_seconds + " " + "Seconds");
 
                     // set current time into textview
 //                    cool_down_info.setText(new StringBuilder().append("Cool down duration: ").append(pad(cool_down_minutes))

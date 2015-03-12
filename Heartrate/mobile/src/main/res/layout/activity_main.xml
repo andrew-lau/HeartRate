@@ -83,7 +83,7 @@
                         android:layout_height="wrap_content"
                         android:textSize = "15sp"
                         android:padding = "5dp"
-                        android:text="1 hour"
+                        android:text="0 hours"
                         android:fontFamily="sans-serif-light"  />
 
                     <TextView
@@ -197,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:textSize = "15sp"
                     android:padding = "5dp"
-                    android:text="1 hour"
+                    android:text="0 hours"
                     android:fontFamily="sans-serif-light"  />
 
                 <TextView
@@ -302,7 +302,7 @@
                         android:layout_height="wrap_content"
                         android:textSize = "15sp"
                         android:padding = "5dp"
-                        android:text="1 hour"
+                        android:text="0 hours"
                         android:fontFamily="sans-serif-light"  />
 
                     <TextView
