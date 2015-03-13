@@ -53,6 +53,16 @@ public class VibrationController implements SensorEventListener {
             float current = values[0];
             Log.e("Heart Beat", "New heart beat data - " + values[0] + ". <<------------------------------------");
             parent.update(current);
+
+            // arrows
+            if(start != 0 && end != 0 && current < start)
+                parent.showUp();
+            else if(start != 0 && end != 0 && current > end)
+                parent.showDown();
+            else
+                parent.hideArrows();
+
+            // vibration
             if(start != 0 && end != 0 && current < start && !vibrating) {
                 vibrating = true;
                 vibrator.vibrate(new long[] {0, 500, 1000, 500, 1000, 500, 1000, 500, 30000}, 0);

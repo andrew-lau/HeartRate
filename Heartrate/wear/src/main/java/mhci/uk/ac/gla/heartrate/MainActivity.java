@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.wearable.view.WatchViewStub;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -29,10 +31,12 @@ public class MainActivity extends Activity implements DataApi.DataListener,
     private static final String WORKOUT_KEY = "mhci.uk.ac.gla.heartrate.key.workout";
     private DataMap workoutTimeAndHeartRate = new DataMap();
     private GoogleApiClient mGoogleApiClient;
-    private int countdowns;
 
     private TextView mHeartBeatTextView;
     private TextView mDurationTextView;
+
+    private ImageView mUpArrow;
+    private ImageView mDownArrow;
 
     private boolean countdownRunning=false;
     private boolean stopWorkout=false;
@@ -45,8 +49,6 @@ public class MainActivity extends Activity implements DataApi.DataListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        countdowns = 0;
-
         final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
@@ -54,6 +56,11 @@ public class MainActivity extends Activity implements DataApi.DataListener,
                 stub.findViewById(R.id.round_activity).setBackgroundColor(Color.rgb(51, 102, 153));
                 mHeartBeatTextView = (TextView) stub.findViewById(R.id.heartrate);
                 mDurationTextView = (TextView) stub.findViewById(R.id.duration);
+                mUpArrow = (ImageView) stub.findViewById(R.id.arrow_up);
+                mDownArrow = (ImageView) stub.findViewById(R.id.arrow_down);
+
+                mUpArrow.setVisibility(View.INVISIBLE);
+                mDownArrow.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -64,8 +71,6 @@ public class MainActivity extends Activity implements DataApi.DataListener,
                 .build();
 
         // heart rate
-        VibrationController vc = new VibrationController(this);
-        vc.setRange(800, 1000);
         vc = new VibrationController(this);
         vc.setRange(20, 1000);
         vc.start();
@@ -203,7 +208,7 @@ public class MainActivity extends Activity implements DataApi.DataListener,
             if(heartRate > 0)
                 mHeartBeatTextView.setText(heartRate.toString());
             else
-                mHeartBeatTextView.setText("76"/*"---"*/);
+                mHeartBeatTextView.setText("---");
         }
     }
 
@@ -218,4 +223,22 @@ public class MainActivity extends Activity implements DataApi.DataListener,
             stopWorkout=true;
         }
     }
+
+    public void showUp() {
+        if(mUpArrow != null)
+            mUpArrow.setVisibility(View.VISIBLE);
+    }
+
+    public void showDown() {
+        if(mDownArrow != null)
+            mDownArrow.setVisibility(View.VISIBLE);
+    }
+
+    public void hideArrows() {
+        if(mUpArrow != null && mDownArrow != null) {
+            mUpArrow.setVisibility(View.INVISIBLE);
+            mDownArrow.setVisibility(View.INVISIBLE);
+        }
+    }
+
 }
