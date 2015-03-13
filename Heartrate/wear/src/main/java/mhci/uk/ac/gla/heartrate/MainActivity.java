@@ -131,17 +131,14 @@ public class MainActivity extends Activity implements DataApi.DataListener,
         }
     }
 
-    private void startCountdown(long length, String type) {
-        final String typeS=type;
+    private void startCountdown(long length) {
         countdownRunning=true;
         new CountDownTimer(length, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                String zero = (millisUntilFinished / 1000 >= 10) ? "" : "0";
-                mDurationTextView.setText("00:00:" + zero + millisUntilFinished / 1000);
                 long seconds = (millisUntilFinished/1000)%60;
                 long minutes = (millisUntilFinished/(1000*60))%60;
-                mDurationTextView.setText(typeS+"\n"+minutes+":"+seconds);
+                mDurationTextView.setText(minutes+":"+seconds);
             }
 
             public void onFinish() {
